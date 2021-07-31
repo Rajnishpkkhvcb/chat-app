@@ -1,58 +1,133 @@
-  
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
-  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script defer src="script.js"></script>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
+<html>
+
+<style>
+	/*add full-width input fields*/
+	body{
+		background-color:black;
+	}
+	input[type=text],
+	input[type=password],
+	input[type=Number]
+	 {
+		width:100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 2px solid orangered;
+		box-sizing: border-box;
+        border-radius: 5px;
+	}
+
+	label
+	{
+		color:orangered;
+	}
+
+    p{
+        color: white;
     }
 
-    #message-container {
-      color: purple;
-      width: 80%;
-      max-width: 1200px;
-    }
+	h2
+	{
+		color:orangered;
+		font-size: 30px;
+        margin-top: 50px;
+		margin-left: 40%;
+        margin-bottom: 30px;
+	}
+	button {
+		background-color:orangered;
+		color: white;
+		padding: 15px 20px;
+		margin: 15px 0;
+		
+        border-color: solid orangered;
+        border-radius:10px;;
+	}
 
-    #message-container div {
-      border-radius:25px;
-
-      background-color: rgb(212, 119, 119);
-      padding: 5px;
+    .box{
+        border-radius: 10px;
+        width: 550px;
+        background-color: black;
+        margin-left: 28%;
+        margin-right: 20%;
+        box-shadow: 0.2px 0.2px 1px 1px burlywood;
     }
+	
+	
+	.signupbtn {
+		float: left;
+		width: 100%;
 
-    #message-container div:nth-child(2n) {
-      background-color: rgb(255, 255, 255);
-    }
+	}
+	
+	
+	.container {
+		padding: 16px;
+	}
+	/*clear floats*/
+	
+	.clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+	/*styles for cancel button and signup button
+	on extra small screens*/
+	
+	@media screen and (max-width: 300px) {
+		.cancelbtn,
+		.signupbtn {
+            margin: 0%;
+			width: 100%;
+		}
 
-    #send-container {
-      position: fixed;
-      padding-bottom: 30px;
-      bottom: 0;
-      background-color: white;
-      max-width: 1200px;
-      width: 80%;
-      display: flex;
-    }
 
-    #message-input {
-      flex-grow: 1;
+	}
+
+    .login{
+        margin-left: 200px;
+        color: orangered;
     }
-  </style>
-</head>
+    .login-link{
+        color: white;
+        text-decoration: underline;
+    }
+</style>
+
 <body>
-  <div id="message-container"></div>
-  <form id="send-container">
-    <input type="text" id="message-input">
-    <button type="submit" id="send-button">Send</button>
-  </form>
+
+	<h2>Welcome </h2>
+	<!--Step 1:Adding HTML-->
+    <div class="box">
+        
+	<form method="POST" onsubmit="signup(event)" >
+		<div class="container">
+			<label><b>Name</b></label>
+			<input type="text" placeholder="Enter Your Name" name="name" required>
+
+			<label><b>Email</b></label>
+			<input type="text" placeholder="Enter Email" name="email" required>
+
+			<label><b>Phone Number</b></label><br><br>
+			<input type="Number" placeholder="Phone Number" name="phone" required>
+			
+			<label><br>Password</b></label>
+			<input type="password" placeholder="Enter Password" name="psw" required>
+			<div class="clearfix">
+				
+				<button type="submit" class="signupbtn">Register</button>
+			</div>
+		</div>
+
+	</form>
+    <div class="login">Already a user? <a href='../login/login.html' class="login-link">Login</a></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+<script src="signup.js"></script>
 </body>
+
+
 </html>
